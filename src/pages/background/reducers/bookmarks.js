@@ -1,53 +1,59 @@
 const defaultState = {
   tabs: [],
-  chronology: [],
+  // chronology: [],
   addFromButton: false,
-  search: "",
-  searchResult: []
+  search: '',
+  searchResult: [],
 };
 
+// eslint-disable-next-line complexity
 const bookmark = (state = defaultState, action) => {
+  // eslint-disable-next-line default-case
   switch (action.type) {
-    case "ADD":
+    case 'ADD':
       return {
         ...state,
-        tabs: [{ tab: action.urlList, expiry: action.expiry }, ...state.tabs]
+        tabs: [{ tab: action.urlList, expiry: action.expiry }, ...state.tabs],
       };
-    case "ADD-FROM-BUTTON":
+    case 'ADD-FROM-BUTTON':
       return {
         ...state,
-        addFromButton: action.addFromButton
+        addFromButton: action.addFromButton,
       };
-    case "REFRESH":
+    case 'REFRESH':
       return {
         ...state,
-        tabs: [{ tab: action.urlList, expiry: action.expiry }, ...state.tabs]
+        tabs: [{ tab: action.urlList, expiry: action.expiry }, ...state.tabs],
       };
-    case "DELETE-ALL":
+    case 'DELETE-ALL':
       return {
         ...state,
-        tabs: []
+        tabs: [],
       };
-    case "DELETE-ONE":
-      return {
-        ...state,
-        tabs: [
-          ...state.tabs.filter(element => element.tab[0].url !== action.url)
-        ],
-        addFromButton: false
-      };
-    case "EXPIRY":
+    case 'DELETE-ONE':
       return {
         ...state,
         tabs: [
-          ...state.tabs.filter(element => element.tab[0].url !== action.url)
+          ...state.tabs.filter(element => element.tab[0].url !== action.url),
         ],
-        chronology: [
-          ...state.tabs.filter(element => element.tab[0].url === action.url),
-          ...state.chronology
-        ]
+        // chronology: [
+        //   ...state.tabs.filter(element => element.tab[0].url === action.url),
+        //   ...state.chronology,
+        // ],
+        addFromButton: false,
       };
-    case "SEARCH":
+    // case 'EXPIRY':
+    //   return {
+    //     ...state,
+    //     tabs: [
+    //       ...state.tabs.filter(element => element.tab[0].url !== action.url),
+    //     ],
+    //     chronology: [
+    //       ...state.tabs.filter(element => element.tab[0].url === action.url),
+    //       ...state.chronology,
+    //     ],
+    //   };
+    case 'SEARCH':
       return {
         ...state,
         searchResult: [
@@ -55,22 +61,22 @@ const bookmark = (state = defaultState, action) => {
             element =>
               element.tab[0].title
                 .toLowerCase()
-                .indexOf(action.textSearched.toLowerCase()) !== -1
+                .indexOf(action.textSearched.toLowerCase()) !== -1,
           ),
-          ...state.chronology.filter(
-            element =>
-              element.tab[0].title
-                .toLowerCase()
-                .indexOf(action.textSearched.toLowerCase()) !== -1
-          )
+          // ...state.chronology.filter(
+          //   element =>
+          //     element.tab[0].title
+          //       .toLowerCase()
+          //       .indexOf(action.textSearched.toLowerCase()) !== -1,
+          // ),
         ],
-        search: action.textSearched
+        search: action.textSearched,
       };
-    case "EMPTY-SEARCH":
+    case 'EMPTY-SEARCH':
       return {
         ...state,
         searchResult: [],
-        search: ""
+        search: '',
       };
   }
   return state;

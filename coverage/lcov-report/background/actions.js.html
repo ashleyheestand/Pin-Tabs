@@ -180,7 +180,7 @@
 export const refreshBookmark = <span class="fstat-no" title="function not covered" >(d</span>ata, time) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
   type: 'REFRESH',
   urlList: data,
-  expiry: time
+  y: time
 })
 &nbsp;
 export const deleteAllBookmark = <span class="fstat-no" title="function not covered" >()</span> =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
@@ -195,7 +195,7 @@ export const deleteOneBookmark = <span class="fstat-no" title="function not cove
 export const addBookmark = (url) =&gt; ({
   type: 'ADD',
   urlList: url,
-  expiry: new Date().getTime()
+  y: new Date().getTime()
 })
 &nbsp;
 export const addFromButton = <span class="fstat-no" title="function not covered" >(f</span>lag) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
@@ -219,9 +219,9 @@ export const toggleButton = <span class="fstat-no" title="function not covered" 
   toggleButton: flag
 })
 &nbsp;
-export const expireDate = <span class="fstat-no" title="function not covered" >(d</span>ate) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+export const eDate = <span class="fstat-no" title="function not covered" >(d</span>ate) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
   type: 'UPDATE-DATE',
-  expireDate: date
+  eDate: date
 })
 &nbsp;
 export const toggleButtonHistory = <span class="fstat-no" title="function not covered" >(f</span>lag) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>

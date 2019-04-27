@@ -1,66 +1,64 @@
-
 //BOOKMARKS ACTIONS
 export const refreshBookmark = (data, time) => ({
   type: 'REFRESH',
   urlList: data,
-  expiry: time
-})
+  y: time,
+});
 
 export const deleteAllBookmark = () => ({
   type: 'DELETE-ALL',
-})
+});
 
-export const deleteOneBookmark = (url) => ({
+export const deleteOneBookmark = url => ({
   type: 'DELETE-ONE',
-  url: url
-})
+  url: url,
+});
 
-export const addBookmark = (url) => ({
+export const addBookmark = url => ({
   type: 'ADD',
   urlList: url,
-  expiry: new Date().getTime()
-})
+  y: new Date().getTime(),
+});
 
-export const addFromButton = (flag) => ({
+export const addFromButton = flag => ({
   type: 'DELETE-ONE',
-  addFromButton: flag
-})
+  addFromButton: flag,
+});
 
-export const searchBookmark = (text) => ({
+export const searchBookmark = text => ({
   type: 'SEARCH',
-  textSearched: text
-})
+  textSearched: text,
+});
 
 export const emptySearch = () => ({
-  type: 'EMPTY-SEARCH'
-})
+  type: 'EMPTY-SEARCH',
+});
 
 //SETTINGS actions
 
-export const toggleButton = (flag) => ({
+export const toggleButton = flag => ({
   type: 'TOGGLE-BUTTON',
-  toggleButton: flag
-})
+  toggleButton: flag,
+});
 
-export const expireDate = (date) => ({
-  type: 'UPDATE-DATE',
-  expireDate: date
-})
+// export const eDate = (date) => ({
+//   type: 'UPDATE-DATE',
+//   eDate: date
+// })
 
-export const toggleButtonHistory = (flag) => ({
-  type: 'TOGGLE-BUTTON-HISTORY',
-  toggleButtonHistory: flag
-})
-
+// export const toggleButtonHistory = (flag) => ({
+//   type: 'TOGGLE-BUTTON-HISTORY',
+//   toggleButtonHistory: flag
+// })
 
 // ANIMATION ACTIONS
 
-export const buttonCog = (flag) => ({
+export const buttonCog = flag => ({
   type: 'TOGGLE-COG',
-  buttonCog: flag
-})
+  buttonCog: flag,
+});
 
-export const toggleSearch = (classValue) => ({
+export const toggleSearch = classValue => ({
   type: 'TOGGLE-SEARCH',
-  toggleSearch: classValue
-})
+  toggleSearch: classValue,
+});

@@ -1,14 +1,14 @@
-import { Store } from "react-chrome-redux";
-import React, { Component } from "react";
-import "./settings.css";
-import "./App";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { Store } from 'react-chrome-redux';
+import React, { Component } from 'react';
+import './settings.css';
+import './App';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   toggleButton,
   toggleButtonHistory,
-  expireDate
-} from "../background/actions";
+  expireDate,
+} from '../background/actions';
 
 class Settings extends React.Component {
   // ======================== RENDERING
@@ -18,14 +18,14 @@ class Settings extends React.Component {
       <div>
         <div className="header">
           <h1>Settings</h1>
-          <Link to={"/pages/popup.html"} style={{ color: "black" }}>
+          <Link to={'/pages/popup.html'} style={{ color: 'black' }}>
             <i class="fa fa-check fa-2x" />
           </Link>
         </div>
 
         <form>
           <ul>
-            <li>
+            {/* <li>
               <label>Keep bookmarks for</label>
               <select
                 value={this.props.settings.expireDate}
@@ -41,7 +41,7 @@ class Settings extends React.Component {
                 <option value="518400000">6 days</option>
                 <option value="604800000">1 week</option>
               </select>
-            </li>
+            </li> */}
             <li>
               <label>Show icon</label>
               <input
@@ -50,14 +50,14 @@ class Settings extends React.Component {
                 onChange={e => this.props.toggle(e.target.checked)}
               />
             </li>
-            <li>
+            {/* <li>
               <label>Show history</label>
               <input
                 type="checkbox"
                 checked={this.props.settings.buttonHistory}
                 onChange={e => this.props.toggleHistory(e.target.checked)}
               />
-            </li>
+            </li> */}
           </ul>
         </form>
       </div>
@@ -67,13 +67,16 @@ class Settings extends React.Component {
 
 const mapStateToProps = state => ({
   bookmark: state.bookmark,
-  settings: state.settings
+  settings: state.settings,
 });
 
 const mapDispatchToProps = dispatch => ({
   toggle: flag => dispatch(toggleButton(flag)),
-  toggleHistory: flag => dispatch(toggleButtonHistory(flag)),
-  expire: date => dispatch(expireDate(date))
+  // toggleHistory: flag => dispatch(toggleButtonHistory(flag)),
+  // expire: date => dispatch(expireDate(date)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Settings);

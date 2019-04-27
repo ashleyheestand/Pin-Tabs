@@ -413,11 +413,11 @@ class Dashboard extends React.Component {
   };
 &nbsp;
 <span class="fstat-no" title="function not covered" >  co</span>mponentDidMount() {
-    // VERSION 1.0.2 Double check if the link has expireDate
+    // VERSION 1.0.2 Double check if the link has eDate
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    this.props.bookmark.tabs.map(<span class="fstat-no" title="function not covered" >ta</span>b =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (tab.expiry &gt;= this.props.settings.expireDate + Date.now()) {</span>
-<span class="cstat-no" title="statement not covered" >        store.dispatch({ type: "EXPIRY", url: tab.tab[0].url });</span>
+<span class="cstat-no" title="statement not covered" >      if (tab.y &gt;= this.props.settings.eDate + Date.now()) {</span>
+<span class="cstat-no" title="statement not covered" >        store.dispatch({ type: "Y", url: tab.tab[0].url });</span>
       }
     });
   }
@@ -429,7 +429,7 @@ class Dashboard extends React.Component {
           tabs={this.props.bookmark.tabs}
           deleteTab={this.deleteTab}
           action="renderBookmark"
-          expirySettings={this.props.settings.expireDate}
+          ySettings={this.props.settings.eDate}
         /&gt;
       );
     }
@@ -473,7 +473,7 @@ class Dashboard extends React.Component {
             tabs={this.props.bookmark.chronology}
             deleteTab={false}
             action="renderChronology"
-            expired={true}
+            ed={true}
           /&gt;
         &lt;/div&gt;
         &lt;div className="footer"&gt;

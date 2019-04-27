@@ -1,31 +1,29 @@
-
 const defaultState = {
   button: false,
   buttonHystory: true,
-  expireDate: 86400000 // 1 day
+  // expireDate: 86400000, // 1 day
+};
 
-}
-
-const settings = (state=defaultState,action) => {
+const settings = (state = defaultState, action) => {
+  // eslint-disable-next-line default-case
   switch (action.type) {
     case 'TOGGLE-BUTTON':
       return {
         ...state,
-        button: action.toggleButton
-      }
+        button: action.toggleButton,
+      };
     case 'TOGGLE-BUTTON-HISTORY':
       return {
         ...state,
-        buttonHistory: action.toggleButtonHistory
-      }
-    case 'UPDATE-DATE':
-      return {
-        ...state,
-        expireDate: action.expireDate
-      }
-
+        buttonHistory: action.toggleButtonHistory,
+      };
+    // case 'UPDATE-DATE':
+    //   return {
+    //     ...state,
+    //     expireDate: action.expireDate,
+    //   };
   }
-  return state
-}
+  return state;
+};
 
 export default settings;

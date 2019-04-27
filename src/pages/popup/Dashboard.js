@@ -1,20 +1,21 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   refreshBookmark,
   deleteAllBookmark,
   deleteOneBookmark,
   addBookmark,
-  addFromButton
-} from "../background/actions";
-import "./dashboard.css";
-import ListView from "./ListView.js";
-import Settings from "./Settings";
-import Search from "./Search";
-import truncate from "truncate";
-import { Link } from "react-router-dom";
+  addFromButton,
+} from '../background/actions';
+import './dashboard.css';
+import ListView from './ListView.js';
+import Settings from './Settings';
+import Search from './Search';
+import truncate from 'truncate';
+import { Link } from 'react-router-dom';
 
 class Dashboard extends React.Component {
+  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
   }
@@ -25,7 +26,7 @@ class Dashboard extends React.Component {
         resolved(data);
       });
     }).then(link => {
-      if (!link[0].favIconUrl) link[0].favIconUrl = "../assets/nothing.png";
+      if (!link[0].favIconUrl) link[0].favIconUrl = '../assets/nothing.png';
       if (link[0].title.length > 10)
         link[0].title = truncate(link[0].title.toString(), 50);
       const flag = this.checkUrl(link);
@@ -57,12 +58,11 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     // VERSION 1.0.2 Double check if the link has expireDate
-
-    this.props.bookmark.tabs.map(tab => {
-      if (tab.expiry >= this.props.settings.expireDate + Date.now()) {
-        store.dispatch({ type: "EXPIRY", url: tab.tab[0].url });
-      }
-    });
+    // this.props.bookmark.tabs.map(tab => {
+    //   if (tab.expiry >= this.props.settings.expireDate + Date.now()) {
+    //     store.dispatch({ type: 'EXPIRY', url: tab.tab[0].url });
+    //   }
+    // });
   }
 
   checkSearch() {
@@ -73,19 +73,19 @@ class Dashboard extends React.Component {
             tabs={this.props.bookmark.tabs}
             deleteTab={this.deleteTab}
             action="renderBookmark"
-            expirySettings={this.props.settings.expireDate}
+            // expirySettings={this.props.settings.expireDate}
           />
-          <div
-            className={this.props.settings.buttonHistory ? "visible" : "hidden"}
+          {/* <div
+            className={this.props.settings.buttonHistory ? 'visible' : 'hidden'}
           >
             <h2 className="history">History</h2>
             <ListView
               tabs={this.props.bookmark.chronology}
               deleteTab={false}
               action="renderChronology"
-              expired={true}
+              // expired={true}
             />
-          </div>
+          </div> */}
         </div>
       );
     }
@@ -104,7 +104,7 @@ class Dashboard extends React.Component {
       <div>
         <div className="header">
           <h1>Pin Tabs</h1>
-          <Link to={"/pages/settings"} style={{ color: "black" }}>
+          <Link to={'/pages/settings'} style={{ color: 'black' }}>
             <i class="fa fa-cog fa-2x" />
           </Link>
         </div>
@@ -144,7 +144,7 @@ class Dashboard extends React.Component {
 const mapStateToProps = state => ({
   bookmark: state.bookmark,
   settings: state.settings,
-  animation: state.animation
+  animation: state.animation,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -152,7 +152,10 @@ const mapDispatchToProps = dispatch => ({
   refresh: data => dispatch(refreshBookmark(data)),
   deleteAll: () => dispatch(deleteAllBookmark()),
   deleteOne: url => dispatch(deleteOneBookmark(url)),
-  addThroughButton: flag => dispatch(addFromButton(flag))
+  addThroughButton: flag => dispatch(addFromButton(flag)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Dashboard);

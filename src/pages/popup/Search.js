@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import "./search.css";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import './search.css';
 import {
   searchBookmark,
   emptySearch,
-  toggleSearch
-} from "../background/actions";
-import ListView from "./ListView";
+  toggleSearch,
+} from '../background/actions';
+import ListView from './ListView';
 class Search extends React.Component {
   findTab = () => {
     if (this.props.bookmark.search) {
@@ -17,7 +17,7 @@ class Search extends React.Component {
             className={this.props.animation.toggleSearch}
             tabs={this.props.bookmark.searchResult}
             action="renderBookmark"
-            expirySettings={this.props.settings.expireDate}
+            // expirySettings={this.props.settings.expireDate}
           />
         </div>
       );
@@ -46,13 +46,16 @@ class Search extends React.Component {
 const mapStateToProps = state => ({
   bookmark: state.bookmark,
   settings: state.settings,
-  animation: state.animation
+  animation: state.animation,
 });
 
 const mapDispatchToProps = dispatch => ({
   searchString: text => dispatch(searchBookmark(text)),
   resetSearch: () => dispatch(emptySearch()),
-  displaySearch: classValue => dispatch(toggleSearch(classValue))
+  displaySearch: classValue => dispatch(toggleSearch(classValue)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Search);
