@@ -20,6 +20,11 @@ const bookmark = (state = defaultState, action) => {
         ...state,
         addFromButton: action.addFromButton,
       };
+    case 'ADD-CATEGORY':
+      return {
+        ...state,
+        tabs: [{ tab: action.categories }, ...state.tabs],
+      };
     case 'REFRESH':
       return {
         ...state,

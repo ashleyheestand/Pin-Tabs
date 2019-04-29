@@ -6,6 +6,7 @@ import {
   deleteOneBookmark,
   addBookmark,
   addFromButton,
+  addCategory,
 } from '../background/actions';
 import './dashboard.css';
 import ListView from './ListView.js';
@@ -47,6 +48,11 @@ class Dashboard extends React.Component {
     return true;
   }
 
+  addCategory(category) {
+    this.props.assignCategory(category);
+    return data;
+  }
+
   clearAll() {
     this.props.deleteAll();
   }
@@ -57,6 +63,11 @@ class Dashboard extends React.Component {
   };
 
   componentDidMount() {
+    // this.props.bookmark.tabs.map(tab => {
+    //   if (tab.category) {
+    //     store.dispatch({type: 'ADD-CATEGORY', category})
+    //   }
+    // })
     // VERSION 1.0.2 Double check if the link has expireDate
     // this.props.bookmark.tabs.map(tab => {
     //   if (tab.expiry >= this.props.settings.expireDate + Date.now()) {
@@ -103,7 +114,7 @@ class Dashboard extends React.Component {
     return (
       <div>
         <div className="header">
-          <h1>Pin Tabs</h1>
+          <h1>Pin (Shopping) Tabs</h1>
           <Link to={'/pages/settings'} style={{ color: 'black' }}>
             <i class="fa fa-cog fa-2x" />
           </Link>
@@ -112,7 +123,7 @@ class Dashboard extends React.Component {
         <div className="nav">
           <div className="col-1 custom">
             <button onClick={() => this.saveBookmark()}>Add</button>
-            {/* <button onClick={() => this.clearAll()}>Delete All</button> */}
+            <button onClick={() => this.clearAll()}>Delete All</button>
             <Search />
           </div>
 
@@ -122,7 +133,7 @@ class Dashboard extends React.Component {
         {this.checkSearch()}
 
         <div className="footer">
-          <div className="footer__author">Pier Roberto Lucisano 📌 2019</div>
+          {/* <div className="footer__author">Pier Roberto Lucisano 📌 2019</div>
           <div className="footer__social">
             <div className="footer__github">
               <i class="fa fa-github fa-lg" aria-hidden="true" />
@@ -131,10 +142,10 @@ class Dashboard extends React.Component {
                 href="https://github.com/pierroberto/Pin-Tabs"
                 target="_blank"
               >
-                Github
-              </a>
-            </div>
-          </div>
+                Github */}
+          {/* </a>
+            </div> */}
+          {/* </div> */}
         </div>
       </div>
     );
@@ -153,6 +164,7 @@ const mapDispatchToProps = dispatch => ({
   deleteAll: () => dispatch(deleteAllBookmark()),
   deleteOne: url => dispatch(deleteOneBookmark(url)),
   addThroughButton: flag => dispatch(addFromButton(flag)),
+  assignCategory: category => dispatch(addCategory(category)),
 });
 
 export default connect(

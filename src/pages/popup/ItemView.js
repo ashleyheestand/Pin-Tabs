@@ -15,6 +15,24 @@ export default class ItemView extends React.Component {
     }
   }
 
+  checkCategory() {
+    if (this.props.categories) {
+      return (
+        <div className="col-1-2 warning">
+          <select onChange={() => this.props.addCategory(this.props.category)}>
+            {' '}
+            {this.props.categories.map(category => {
+              return <option key={category.id}>{category}</option>;
+            })}
+          </select>
+        </div>
+      );
+    }
+  }
+
+  //   }
+  // }
+
   // eslint-disable-next-line complexity
   // checkExpireDate() {
   //   let timeLeft;
@@ -66,7 +84,12 @@ export default class ItemView extends React.Component {
             <div className="col-1-1" />
             {this.checkExpireDate()}
           </div> */}
+          <div className="row">
+            <div className="col-1-1" />
+            {this.checkCategory()}
+          </div>
         </div>
+
         {this.checkDeleteButton()}
       </div>
     );

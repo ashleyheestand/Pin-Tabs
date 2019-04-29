@@ -34,6 +34,11 @@ export const emptySearch = () => ({
   type: 'EMPTY-SEARCH',
 });
 
+export const addCategory = category => ({
+  type: 'ADD-CATEGORY',
+  categories: category,
+});
+
 //SETTINGS actions
 
 export const toggleButton = flag => ({
@@ -62,3 +67,7 @@ export const toggleSearch = classValue => ({
   type: 'TOGGLE-SEARCH',
   toggleSearch: classValue,
 });
+
+//CATEGORIES ACTIONS
+
+// export const add
